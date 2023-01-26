@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.mateuscristian.workshopmongo.entities.Post;
 import com.mateuscristian.workshopmongo.repositories.PostRepository;
@@ -32,5 +30,9 @@ public class PostService {
 		}
 		
 		return post.get();
+	}
+	
+	public List<Post> findByTitle(String text){
+		return postRepository.findByTitleContainingIgnoreCase(text);
 	}
 }
